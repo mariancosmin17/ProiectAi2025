@@ -16,3 +16,7 @@ class SolveResponse(BaseModel):
     has_equilibrium: bool
     equilibria: List[NashEquilibrium]
     message: str
+
+class EvaluateRequest(BaseModel):
+    student_answer: str
+    correct_equilibria: List[str]

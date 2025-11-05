@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from app.nash.models import NashProblem, SolveResponse, NashEquilibrium
+from app.nash.models import NashProblem, SolveResponse, NashEquilibrium, EvaluateRequest
 from app.nash.logic import pure_nash_equilibria
 from app.nash.question_generator import generate_random_nash_question
 
@@ -42,21 +42,20 @@ def generate_question():
 
 # --- NOU: EVALUARE RĂSPUNS STUDENT ---
 @router.post("/evaluate")
-def evaluate_answer(student_answer: str, correct_equilibria: list[str]):
+def evaluate_answer(request: EvaluateRequest):
     """
     Primește răspunsul studentului (text) și lista echilibrelor corecte.
     Returnează scorul și feedback-ul.
     """
-    student_answer = student_answer.strip().lower()
+    student_answer = request.student_answer.strip().lower()
+    correct = [eq.lower() for eq in request.correct_equilibria]
 
-    correct = [eq.lower() for eq in correct_equilibria]
     matched = any(eq in student_answer for eq in correct)
-
     score = 100 if matched else 0
     feedback = (
         "Corect! Ai identificat echilibrul Nash corect."
-        if matched else
-        "Răspuns incorect. Încearcă să identifici perechea de strategii unde fiecare jucător alege un răspuns optim."
+        if matched
+        else "Răspuns incorect. Încearcă să identifici perechea de strategii unde fiecare jucător alege un răspuns optim."
     )
 
     return {"score": score, "feedback": feedback}
