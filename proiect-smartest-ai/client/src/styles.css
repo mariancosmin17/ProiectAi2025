@@ -8,9 +8,10 @@ body {
   display: flex;
   justify-content: center;   /* centrează orizontal */
   align-items: center;       /* centrează vertical */
-  min-height: 100vh;         /* ocupă toată înălțimea ecranului */
+  min-height: 100vh;   
+  color: #222;       /* ocupă toată înălțimea ecranului */
 }
-
+table, th, td, .result-box, textarea { color: #222; }
 /* containerul principal */
 .container {
   width: 90%;
@@ -78,3 +79,7 @@ th {
   margin-top: 20px;
   border-radius: 10px;
 }
+
+body, table, th, td, textarea, .result-box { color: #222; }
+
+button:disabled { opacity: 0.6; cursor: not-allowed; }
