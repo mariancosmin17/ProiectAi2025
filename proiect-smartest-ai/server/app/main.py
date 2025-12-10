@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.nash.api import router as nash_router
+from app.csp.api import router as csp_router
 
 app = FastAPI(title="SmarTest (simplu)")
 
@@ -19,3 +20,4 @@ def health():
 
 # API v1
 app.include_router(nash_router, prefix="/api/v1")
+app.include_router(csp_router, prefix="/api/v1")
