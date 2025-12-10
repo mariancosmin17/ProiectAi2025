@@ -2,8 +2,8 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.nash import api as nash_api
-import os
+from app.nash.api import router as nash_router
+from app.csp.api import router as csp_router
 
 app = FastAPI(
     title="SmarTest (simplu)",
@@ -34,21 +34,6 @@ app.add_middleware(
 def root():
     return {"message": "Serverul este activ."}
 
-@app.get("/health", tags=["health"])
-def health():
-    return {"status": "ok"}
-
-@app.get("/ready", tags=["health"])
-def ready():
-    return {"ready": True}
-
-# ---------------------- API v1 ----------------------
-# IMPORTANT: routerul pentru Nash este montat pe /api/v1
-app.include_router(nash_api.router, prefix="/api/v1")
-
-# ---------------------- Run local ----------------------
-# Permite rularea directă: `python main.py`
-if __name__ == "__main__":
-    import uvicorn
-    # Pornește pe 0.0.0.0:8000, reîncărcare activă în dev
-    uvicorn.run("app.main:app", host="0.0.0.0", port=8000, reload=True)
+# API v1
+app.include_router(nash_router, prefix="/api/v1")
+app.include_router(csp_router, prefix="/api/v1")
