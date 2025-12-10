@@ -1,5 +1,7 @@
 # server/app/main.py
 
+import os  # 👈 LIPSEA IMPORTUL ĂSTA!
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.nash.api import router as nash_router
@@ -32,8 +34,8 @@ app.add_middleware(
 # ---------------------- Health ----------------------
 @app.get("/", tags=["health"])
 def root():
-    return {"message": "Serverul este activ."}
+  return {"message": "Serverul este activ."}
 
-# API v1
+# ---------------------- API v1 ----------------------
 app.include_router(nash_router, prefix="/api/v1")
 app.include_router(csp_router, prefix="/api/v1")
