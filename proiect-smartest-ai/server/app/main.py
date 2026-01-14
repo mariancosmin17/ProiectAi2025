@@ -7,6 +7,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from app. nash.api import router as nash_router
 from app.csp. api import router as csp_router
 from app.search.api import router as search_router
+from app.path.api import router as path_router
+from app.graph.api import router as graph_router
 
 # 👇 Comentat până când implementăm modulul alphabeta
 from app. alphabeta.api import router as alphabeta_router
@@ -41,7 +43,7 @@ def root():
     return {
         "message": "SmarTest API este activ",
         "version": "1.0.0",
-        "modules": ["Nash Equilibrium", "CSP Solver", "Search Strategies"]
+        "modules": ["Nash Equilibrium", "CSP Solver", "Search Strategies", "Alpha-Beta Pruning", "Pathfinding", "Graph"]
     }
 
 # ---------------------- API v1 ----------------------
@@ -49,3 +51,5 @@ app.include_router(nash_router, prefix="/api/v1")
 app.include_router(csp_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")
 app.include_router(alphabeta_router, prefix="/api/v1")
+app.include_router(path_router, prefix="/api/v1")
+app.include_router(graph_router, prefix="/api/v1")
