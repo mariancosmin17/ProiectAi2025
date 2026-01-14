@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NashGame from "./components/NashGame";
 import CSPSolver from "./components/CSPSolver";
 import SearchStrategy from "./components/SearchStrategy";
+import AlphaBetaGame from "./components/AlphaBetaGame";
 import "./styles.css";
 
 function App() {
@@ -32,7 +33,23 @@ function App() {
           onClick={() => setActiveTab("csp")}
         >
           🧩 CSP Solver
-        </button>
+         <button
+            onClick={() => setActiveComponent("alphabeta")}
+             style={{
+              padding: "12px 24px",
+              fontSize: 16,
+              fontWeight: "bold",
+              background: activeComponent === "alphabeta" ? "#ffffff" : "rgba(255,255,255,0.3)",
+              color: activeComponent === "alphabeta" ? "#667eea" : "white",
+              border: "2px solid white",
+              borderRadius: 8,
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              boxShadow: activeComponent === "alphabeta" ? "0 4px 6px rgba(0,0,0,0.2)" : "none"
+            }}
+          >
+            🌳 Alpha-Beta
+            </button>
       </div>
 
       <div className="tab-content">

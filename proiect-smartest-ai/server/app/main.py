@@ -6,6 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.nash. api import router as nash_router
 from app.csp.api import router as csp_router
+from app.alphabeta.api import router as alphabeta_router
 from app.search.api import router as search_router  # 👈 NOU
 
 app = FastAPI(
@@ -35,9 +36,10 @@ app.add_middleware(
 # ---------------------- Health ----------------------
 @app.get("/", tags=["health"])
 def root():
-  return {"message": "Serverul este activ. "}
+  return {"message": "Serverul este activ."}
 
 # ---------------------- API v1 ----------------------
 app.include_router(nash_router, prefix="/api/v1")
 app.include_router(csp_router, prefix="/api/v1")
 app.include_router(search_router, prefix="/api/v1")  # 👈 NOU
+app.include_router(alphabeta_router, prefix="/api/v1")

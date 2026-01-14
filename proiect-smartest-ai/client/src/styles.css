@@ -2,9 +2,13 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 0;
-}
+  padding: 20px 0;
 
+  display: flex;
+  justify-content: center;   /* centrează pe orizontală */
+  align-items: flex-start;   /* începe de sus, nu pe mijloc */
+  min-height: 100vh;
+  color: #222;
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -16,6 +20,12 @@ body {
 . app-container {
   min-height: 100vh;  /* 👈 Ocupă tot ecranul */
   width: 100%;
+
+table, th, td, .result-box, textarea { color: #222; }
+/* containerul principal */
+.container {
+  width: 90%;
+  max-width: 700px;
   background: white;
   display: flex;
   flex-direction: column;
@@ -352,3 +362,15 @@ tr:hover {
     padding: 15px;
   }
 }
+
+body, table, th, td, textarea, .result-box { color: #222; }
+
+button:disabled { opacity: 0.6; cursor: not-allowed; }
+details summary {
+  user-select: none;
+}
+
+pre {
+  border: 1px solid #e5e7eb;
+}
+
