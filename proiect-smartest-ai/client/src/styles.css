@@ -1,85 +1,354 @@
-/* fundal general */
-body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
+/* ==================== GLOBAL ==================== */
+* {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-
-  display: flex;
-  justify-content: center;   /* centrează orizontal */
-  align-items: center;       /* centrează vertical */
-  min-height: 100vh;   
-  color: #222;       /* ocupă toată înălțimea ecranului */
 }
-table, th, td, .result-box, textarea { color: #222; }
-/* containerul principal */
-.container {
-  width: 90%;
-  max-width: 700px;
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #222;
+  min-height: 100vh;
+  padding: 0;  /* 👈 Eliminăm padding */
+}
+
+. app-container {
+  min-height: 100vh;  /* 👈 Ocupă tot ecranul */
+  width: 100%;
   background: white;
-  padding: 25px 30px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  /* 👇 ELIMINĂM max-width, margin, border-radius, box-shadow */
 }
 
-/* restul stilurilor rămân identice */
-h1 {
+/* ==================== HEADER ==================== */
+.app-header {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
   text-align: center;
-  color: #3f51b5;
-  margin-bottom: 20px;
 }
 
-button {
+.app-header h1 {
+  font-size: 2.5em;
+  margin-bottom: 10px;
+}
+
+.app-header p {
+  font-size: 1.1em;
+  opacity: 0.9;
+}
+
+/* ==================== TABS ==================== */
+.tabs {
+  display: flex;
+  background:  #f5f5f5;
+  border-bottom: 2px solid #ddd;
+}
+
+.tab {
+  flex: 1;
+  padding: 15px 20px;
+  background: transparent;
+  border:  none;
   cursor: pointer;
-  background-color: #3f51b5;
+  font-size: 1em;
+  font-weight:  500;
+  color: #666;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+}
+
+.tab:hover {
+  background: #e8e8e8;
+  color: #333;
+}
+
+. tab.active {
+  color: #667eea;
+  background: white;
+  border-bottom: 3px solid #667eea;
+}
+
+/* ==================== TAB CONTENT ==================== */
+.tab-content {
+  flex: 1;  /* 👈 Ocupă spațiul rămas */
+  padding: 30px;
+  overflow-y: auto;  /* 👈 Scrollbar dacă e nevoie */
+  background: white;
+}
+
+. container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+. container h2 {
+  color:  #333;
+  font-size: 2em;
+  margin-bottom:  10px;
+}
+
+.subtitle {
+  color: #666;
+  font-size: 1.05em;
+  margin-bottom: 25px;
+}
+
+/* ==================== CONTROLS ==================== */
+.controls {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.controls label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight:  500;
+}
+
+.controls select {
+  padding: 8px 12px;
+  border:  1px solid #ccc;
+  border-radius:  6px;
+  font-size: 14px;
+}
+
+/* ==================== BUTTONS ==================== */
+button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 8px;
+  padding: 12px 24px;
+  border-radius:  8px;
   font-size: 15px;
-  transition: background 0.3s;
+  font-weight:  500;
+  cursor: pointer;
+  transition: all 0.3s;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
 
-button:hover {
-  background-color: #2c3e9e;
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+button:active: not(:disabled) {
+  transform: translateY(0);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+. button-group {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+/* ==================== INPUTS ==================== */
+input[type="text"],
+textarea,
+select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius:  8px;
+  font-size:  14px;
+  font-family: inherit;
+  transition: border 0.3s;
+}
+
+input: focus,
+textarea:focus,
+select:focus {
+  outline:  none;
+  border-color:  #667eea;
 }
 
 textarea {
-  width: 100%;
-  height: 80px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 10px;
-  margin-top: 10px;
-  font-size: 14px;
-  resize: none;
+  resize: vertical;
+  min-height: 80px;
 }
 
+/* ==================== QUESTION BOX ==================== */
+.question-box {
+  background: #f9f9f9;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  margin:  20px 0;
+}
+
+.question-text {
+  background: white;
+  padding: 15px;
+  border-left: 4px solid #667eea;
+  border-radius: 6px;
+  margin-bottom:  15px;
+}
+
+.question-text p {
+  margin:  8px 0;
+  line-height: 1.6;
+}
+
+/* ==================== RESULT BOX ==================== */
+.result-box {
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  border: 2px solid #81c784;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.result-box h3 {
+  color:  #2e7d32;
+  margin-bottom: 15px;
+}
+
+.score-badge {
+  display: inline-block;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 20px;
+  font-size:  1.2em;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.score-badge[data-score="100"] {
+  background: linear-gradient(135deg, #66bb6a 0%, #43a047 100%);
+  color: white;
+}
+
+. score-badge[data-score="0"] {
+  background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
+  color: white;
+}
+
+. feedback {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  line-height: 1.6;
+}
+
+.feedback p {
+  margin: 10px 0;
+}
+
+. analysis {
+  font-style: italic;
+  color: #555;
+  margin-top: 10px;
+}
+
+/* ==================== SOLUTION BOX ==================== */
+. solution-box {
+  background:  linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+  border: 2px solid #64b5f6;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+
+.solution-box h3 {
+  color:  #1976d2;
+  margin-bottom: 15px;
+}
+
+.explanation {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+/* ==================== TABLE (Nash) ==================== */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 15px;
+  margin: 20px 0;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 th,
 td {
-  border: 1px solid #ccc;
-  padding: 8px;
+  border: 1px solid #ddd;
+  padding: 12px;
   text-align: center;
 }
 
 th {
-  background-color: #eee;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  font-weight: 600;
 }
 
-.result-box {
+tr:nth-child(even) {
   background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  padding: 15px;
-  margin-top: 20px;
-  border-radius: 10px;
 }
 
-body, table, th, td, textarea, .result-box { color: #222; }
+tr:hover {
+  background-color: #f0f0f0;
+}
 
-button:disabled { opacity: 0.6; cursor: not-allowed; }
+/* ==================== FOOTER ==================== */
+. app-footer {
+  background: #f5f5f5;
+  padding: 20px;
+  text-align:  center;
+  color: #666;
+  font-size: 0.9em;
+  border-top: 1px solid #ddd;
+  margin-top: auto;  /* 👈 Împinge footer-ul jos */
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+  .app-header h1 {
+    font-size: 1.8em;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+
+  .tab {
+    border-bottom: 1px solid #ddd;
+    border-left: 3px solid transparent;
+  }
+
+  .tab. active {
+    border-bottom:  1px solid #ddd;
+    border-left:  3px solid #667eea;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 15px;
+  }
+}

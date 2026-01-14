@@ -1,76 +1,48 @@
 import React, { useState } from "react";
 import NashGame from "./components/NashGame";
 import CSPSolver from "./components/CSPSolver";
+import SearchStrategy from "./components/SearchStrategy";
 import "./styles.css";
 
 function App() {
-  const [activeComponent, setActiveComponent] = useState("nash");
+  const [activeTab, setActiveTab] = useState("search"); // default: Search
 
   return (
-    <div>
-      <div style={{
-        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
-        padding: "20px",
-        textAlign: "center",
-        boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
-      }}>
-        <h1 style={{ color: "white", margin: "0 0 20px 0", fontSize: 32 }}>
-          🎓 SmarTest Platform
-        </h1>
-        <div style={{ display: "flex", gap: 15, justifyContent: "center", flexWrap: "wrap" }}>
-          <button
-            onClick={() => setActiveComponent("nash")}
-            style={{
-              padding: "12px 24px",
-              fontSize: 16,
-              fontWeight: "bold",
-              background: activeComponent === "nash" ? "#ffffff" : "rgba(255,255,255,0.3)",
-              color: activeComponent === "nash" ? "#667eea" : "white",
-              border: "2px solid white",
-              borderRadius: 8,
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              boxShadow: activeComponent === "nash" ? "0 4px 6px rgba(0,0,0,0.2)" : "none"
-            }}
-          >
-            🎯 Nash Equilibrium
-          </button>
-          <button
-            onClick={() => setActiveComponent("csp")}
-            style={{
-              padding: "12px 24px",
-              fontSize: 16,
-              fontWeight: "bold",
-              background: activeComponent === "csp" ? "#ffffff" : "rgba(255,255,255,0.3)",
-              color: activeComponent === "csp" ? "#667eea" : "white",
-              border: "2px solid white",
-              borderRadius: 8,
-              cursor: "pointer",
-              transition: "all 0.3s ease",
-              boxShadow: activeComponent === "csp" ? "0 4px 6px rgba(0,0,0,0.2)" : "none"
-            }}
-          >
-            🧩 CSP Solver
-          </button>
-        </div>
+    <div className="app-container">
+      <header className="app-header">
+        <h1>🎓 SmarTest - AI Question Generator</h1>
+        <p>Generare și evaluare întrebări pentru examenul de Inteligență Artificială</p>
+      </header>
+
+      <div className="tabs">
+        <button
+          className={activeTab === "search" ?  "tab active" : "tab"}
+          onClick={() => setActiveTab("search")}
+        >
+          🔍 Search Strategies
+        </button>
+        <button
+          className={activeTab === "nash" ? "tab active" : "tab"}
+          onClick={() => setActiveTab("nash")}
+        >
+          🎮 Nash Equilibrium
+        </button>
+        <button
+          className={activeTab === "csp" ? "tab active" : "tab"}
+          onClick={() => setActiveTab("csp")}
+        >
+          🧩 CSP Solver
+        </button>
       </div>
 
-      <div style={{ minHeight: "calc(100vh - 140px)" }}>
-        {activeComponent === "nash" && <NashGame />}
-        {activeComponent === "csp" && <CSPSolver />}
+      <div className="tab-content">
+        {activeTab === "search" && <SearchStrategy />}
+        {activeTab === "nash" && <NashGame />}
+        {activeTab === "csp" && <CSPSolver />}
       </div>
 
-      <footer style={{
-        background: "#f3f4f6",
-        padding: "15px",
-        textAlign: "center",
-        fontSize: 13,
-        color: "#6b7280",
-        borderTop: "1px solid #e5e7eb"
-      }}>
-        <p style={{ margin: 0 }}>
-          © 2025 SmarTest Platform - Rezolvare probleme de teorie a jocurilor și CSP
-        </p>
+      <footer className="app-footer">
+        <p>Proiect realizat pentru cursul de Inteligență Artificială - 2025</p>
       </footer>
     </div>
   );
