@@ -2,45 +2,34 @@
 * {
   box-sizing: border-box;
   margin: 0;
-  padding: 20px 0;
+  padding: 0;
+}
 
-  display: flex;
-  justify-content: center;   /* centrează pe orizontală */
-  align-items: flex-start;   /* începe de sus, nu pe mijloc */
-  min-height: 100vh;
-  color: #222;
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: #222;
   min-height: 100vh;
-  padding: 0;  /* 👈 Eliminăm padding */
+  padding: 0;
 }
 
-. app-container {
-  min-height: 100vh;  /* 👈 Ocupă tot ecranul */
+.app-container {
+  min-height: 100vh;
   width: 100%;
-
-table, th, td, .result-box, textarea { color: #222; }
-/* containerul principal */
-.container {
-  width: 90%;
-  max-width: 700px;
   background: white;
   display: flex;
   flex-direction: column;
-  /* 👇 ELIMINĂM max-width, margin, border-radius, box-shadow */
 }
 
 /* ==================== HEADER ==================== */
-.app-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+. app-header {
+  background:  linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
-  padding: 30px;
+  padding:  30px;
   text-align: center;
 }
 
-.app-header h1 {
+. app-header h1 {
   font-size: 2.5em;
   margin-bottom: 10px;
 }
@@ -83,22 +72,22 @@ table, th, td, .result-box, textarea { color: #222; }
 
 /* ==================== TAB CONTENT ==================== */
 .tab-content {
-  flex: 1;  /* 👈 Ocupă spațiul rămas */
+  flex: 1;
   padding: 30px;
-  overflow-y: auto;  /* 👈 Scrollbar dacă e nevoie */
+  overflow-y: auto;
   background: white;
 }
 
 . container {
-  max-width: 1000px;
+  max-width:  1000px;
   margin: 0 auto;
   padding: 20px;
 }
 
-. container h2 {
-  color:  #333;
+.container h2 {
+  color: #333;
   font-size: 2em;
-  margin-bottom:  10px;
+  margin-bottom: 10px;
 }
 
 .subtitle {
@@ -110,7 +99,7 @@ table, th, td, .result-box, textarea { color: #222; }
 /* ==================== CONTROLS ==================== */
 .controls {
   display: flex;
-  gap: 15px;
+  gap:  15px;
   align-items: center;
   margin-bottom: 25px;
   flex-wrap: wrap;
@@ -120,12 +109,12 @@ table, th, td, .result-box, textarea { color: #222; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-weight:  500;
+  font-weight: 500;
 }
 
-.controls select {
+. controls select {
   padding: 8px 12px;
-  border:  1px solid #ccc;
+  border: 1px solid #ccc;
   border-radius:  6px;
   font-size: 14px;
 }
@@ -135,11 +124,11 @@ button {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   color: white;
   border: none;
-  padding: 12px 24px;
-  border-radius:  8px;
+  padding:  12px 24px;
+  border-radius: 8px;
   font-size: 15px;
-  font-weight:  500;
-  cursor: pointer;
+  font-weight: 500;
+  cursor:  pointer;
   transition: all 0.3s;
   box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
 }
@@ -149,21 +138,21 @@ button:hover:not(:disabled) {
   box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
 }
 
-button:active: not(:disabled) {
+button:active:not(:disabled) {
   transform: translateY(0);
 }
 
 button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  box-shadow: none;
+  box-shadow:  none;
 }
 
-. button-group {
+.button-group {
   display: flex;
   gap: 10px;
   justify-content: flex-end;
-  margin-top: 15px;
+  margin-top:  15px;
 }
 
 /* ==================== INPUTS ==================== */
@@ -173,8 +162,8 @@ select {
   width: 100%;
   padding: 12px;
   border: 2px solid #ddd;
-  border-radius:  8px;
-  font-size:  14px;
+  border-radius: 8px;
+  font-size: 14px;
   font-family: inherit;
   transition: border 0.3s;
 }
@@ -197,7 +186,7 @@ textarea {
   border: 2px solid #e0e0e0;
   border-radius: 12px;
   padding: 20px;
-  margin:  20px 0;
+  margin: 20px 0;
 }
 
 .question-text {
@@ -205,11 +194,11 @@ textarea {
   padding: 15px;
   border-left: 4px solid #667eea;
   border-radius: 6px;
-  margin-bottom:  15px;
+  margin-bottom: 15px;
 }
 
 .question-text p {
-  margin:  8px 0;
+  margin: 8px 0;
   line-height: 1.6;
 }
 
@@ -222,17 +211,17 @@ textarea {
   margin: 20px 0;
 }
 
-.result-box h3 {
-  color:  #2e7d32;
-  margin-bottom: 15px;
+. result-box h3 {
+  color: #2e7d32;
+  margin-bottom:  15px;
 }
 
-.score-badge {
-  display: inline-block;
-  padding: 10px 20px;
+. score-badge {
+  display:  inline-block;
+  padding:  10px 20px;
   background: white;
   border-radius: 20px;
-  font-size:  1.2em;
+  font-size: 1.2em;
   margin-bottom: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
@@ -242,12 +231,12 @@ textarea {
   color: white;
 }
 
-. score-badge[data-score="0"] {
+.score-badge[data-score="0"] {
   background: linear-gradient(135deg, #ef5350 0%, #e53935 100%);
   color: white;
 }
 
-. feedback {
+.feedback {
   background: white;
   padding: 15px;
   border-radius: 8px;
@@ -259,14 +248,14 @@ textarea {
 }
 
 . analysis {
-  font-style: italic;
+  font-style:  italic;
   color: #555;
   margin-top: 10px;
 }
 
 /* ==================== SOLUTION BOX ==================== */
-. solution-box {
-  background:  linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+.solution-box {
+  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
   border: 2px solid #64b5f6;
   border-radius: 12px;
   padding: 20px;
@@ -274,14 +263,14 @@ textarea {
 }
 
 .solution-box h3 {
-  color:  #1976d2;
+  color: #1976d2;
   margin-bottom: 15px;
 }
 
 .explanation {
   background: white;
   padding: 15px;
-  border-radius: 8px;
+  border-radius:  8px;
   margin-top: 10px;
   line-height: 1.6;
 }
@@ -289,12 +278,12 @@ textarea {
 /* ==================== TABLE (Nash) ==================== */
 table {
   width: 100%;
-  border-collapse: collapse;
+  border-collapse:  collapse;
   margin: 20px 0;
-  background: white;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  background:  white;
+  border-radius:  8px;
+  overflow:  hidden;
+  box-shadow:  0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 th,
@@ -314,19 +303,19 @@ tr:nth-child(even) {
   background-color: #f9f9f9;
 }
 
-tr:hover {
-  background-color: #f0f0f0;
+tr: hover {
+  background-color:  #f0f0f0;
 }
 
 /* ==================== FOOTER ==================== */
-. app-footer {
+.app-footer {
   background: #f5f5f5;
   padding: 20px;
-  text-align:  center;
+  text-align: center;
   color: #666;
   font-size: 0.9em;
-  border-top: 1px solid #ddd;
-  margin-top: auto;  /* 👈 Împinge footer-ul jos */
+  border-top:  1px solid #ddd;
+  margin-top: auto;
 }
 
 /* ==================== RESPONSIVE ==================== */
@@ -344,9 +333,9 @@ tr:hover {
     border-left: 3px solid transparent;
   }
 
-  .tab. active {
+  . tab. active {
     border-bottom:  1px solid #ddd;
-    border-left:  3px solid #667eea;
+    border-left: 3px solid #667eea;
   }
 
   .controls {
@@ -363,14 +352,11 @@ tr:hover {
   }
 }
 
-body, table, th, td, textarea, .result-box { color: #222; }
-
-button:disabled { opacity: 0.6; cursor: not-allowed; }
+/* ==================== MISC ==================== */
 details summary {
-  user-select: none;
+  user-select:  none;
 }
 
 pre {
   border: 1px solid #e5e7eb;
 }
-

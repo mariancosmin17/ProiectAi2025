@@ -1,21 +1,23 @@
 # server/app/main.py
 
-import os  # 👈 LIPSEA IMPORTUL ĂSTA!
+import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.nash. api import router as nash_router
-from app.csp.api import router as csp_router
-from app.alphabeta.api import router as alphabeta_router
-from app.search.api import router as search_router  # 👈 NOU
+from app. nash.api import router as nash_router
+from app.csp. api import router as csp_router
+from app.search.api import router as search_router
+
+# 👇 Comentat până când implementăm modulul alphabeta
+from app. alphabeta.api import router as alphabeta_router
 
 app = FastAPI(
-    title="SmarTest (simplu)",
+    title="SmarTest AI Question Generator",
     version="1.0.0",
+    description="Generare și evaluare întrebări pentru examenul de Inteligență Artificială"
 )
 
 # ---------------------- CORS (dev) ----------------------
-# Poți seta FRONTEND_URL în env, altfel permite localhost și *
 DEFAULT_ORIGINS = [
     "http://localhost:5173",
     "http://127.0.0.1:5173",
@@ -36,10 +38,14 @@ app.add_middleware(
 # ---------------------- Health ----------------------
 @app.get("/", tags=["health"])
 def root():
-  return {"message": "Serverul este activ."}
+    return {
+        "message": "SmarTest API este activ",
+        "version": "1.0.0",
+        "modules": ["Nash Equilibrium", "CSP Solver", "Search Strategies"]
+    }
 
 # ---------------------- API v1 ----------------------
 app.include_router(nash_router, prefix="/api/v1")
 app.include_router(csp_router, prefix="/api/v1")
-app.include_router(search_router, prefix="/api/v1")  # 👈 NOU
+app.include_router(search_router, prefix="/api/v1")
 app.include_router(alphabeta_router, prefix="/api/v1")
