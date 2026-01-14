@@ -3,14 +3,15 @@ body {
   background-color: #f5f5f5;
   font-family: Arial, sans-serif;
   margin: 0;
-  padding: 0;
+  padding: 20px 0;
 
   display: flex;
-  justify-content: center;   /* centrează orizontal */
-  align-items: center;       /* centrează vertical */
-  min-height: 100vh;   
-  color: #222;       /* ocupă toată înălțimea ecranului */
+  justify-content: center;   /* centrează pe orizontală */
+  align-items: flex-start;   /* începe de sus, nu pe mijloc */
+  min-height: 100vh;
+  color: #222;
 }
+
 table, th, td, .result-box, textarea { color: #222; }
 /* containerul principal */
 .container {
@@ -83,3 +84,11 @@ th {
 body, table, th, td, textarea, .result-box { color: #222; }
 
 button:disabled { opacity: 0.6; cursor: not-allowed; }
+details summary {
+  user-select: none;
+}
+
+pre {
+  border: 1px solid #e5e7eb;
+}
+
